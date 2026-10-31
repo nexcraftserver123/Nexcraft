@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><title>NexCraft · Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Figtree:wght@400;600&display=swap">
+<style>
+:root{--bg:#0a0814;--sf:#140f24;--sf2:#1e1638;--tx:#f1ecff;--mu:#a398c4;--bd:#2f2450;--pk:#ff2d78;--pu:#8b2be2;--g:#5bd97a;--b:#4db5ff;--y:#ffc94a;--o:#ff7a2e;--r:#ff3355;--glass:#0a0814cc;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f8f5ff;--sf:#fff;--sf2:#f1eaff;--tx:#1a1230;--mu:#62597c;--bd:#ddd2f7;--glass:#f8f5ffcc;color-scheme:light}}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);background:var(--bg)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--tx);font:400 16px/1.65 Figtree,system-ui,sans-serif;min-height:100vh;background:radial-gradient(900px 520px at 50% -8%,#ff2d7830,transparent 65%),radial-gradient(700px 520px at 105% 25%,#8b2be230,transparent 65%),radial-gradient(600px 400px at -10% 60%,#8b2be218,transparent 65%)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:10}
+h1,h2,h3{font-family:"Chakra Petch",system-ui,sans-serif;margin:0;line-height:1.15;text-wrap:balance}
+h2{font-size:clamp(1.9rem,5vw,2.7rem);margin-bottom:10px;letter-spacing:.02em}
+h2::after{content:"";display:block;width:64px;height:4px;border-radius:4px;margin-top:12px;background:linear-gradient(90deg,var(--pk),var(--pu))}
+h3{margin-bottom:6px}
+a{color:inherit}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--bd);display:flex;gap:6px;align-items:center;padding:10px 20px;overflow-x:auto}
+header b{font:700 1.2rem "Chakra Petch",sans-serif;letter-spacing:.22em;background:linear-gradient(90deg,var(--pk),var(--pu));-webkit-background-clip:text;background-clip:text;color:transparent;margin-right:auto;white-space:nowrap}
+header a{text-decoration:none;color:var(--mu);white-space:nowrap;font-weight:600;padding:6px 14px;border-radius:99px;transition:background .2s,color .2s}
+header a:hover{color:var(--tx);background:var(--sf2)}
+header a.on{color:#fff;background:linear-gradient(90deg,var(--pk),var(--pu))}
+a.card{display:block;text-decoration:none}
+:focus-visible{outline:2px solid var(--pk);outline-offset:3px}
+main,.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:48px 0 8px}
+.sub{color:var(--mu);margin:0 0 28px;max-width:60ch}
+.ann{background:linear-gradient(90deg,#ff2d7826,#8b2be226);border-bottom:1px solid var(--bd);padding:10px 20px;text-align:center;font-weight:600}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:72px 0 24px}
+.hero .logo{width:132px;height:132px;border-radius:32px;box-shadow:0 0 0 1px var(--bd),0 0 80px #ff2d7870;animation:glow 4s ease-in-out infinite alternate}
+@keyframes glow{to{box-shadow:0 0 0 1px var(--pk),0 0 110px #8b2be2a0}}
+.hero h1{font-size:clamp(3rem,13vw,6.4rem);letter-spacing:.16em;margin:26px 0 0 .16em;background:linear-gradient(90deg,var(--pk) 10%,var(--pu) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(1.05rem,2.6vw,1.3rem);max-width:30ch;margin:14px 0 26px;color:var(--mu)}
+.ip{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center}
+button,.btn{font:600 1rem Figtree,sans-serif;background:var(--sf2);color:var(--tx);border:1px solid var(--bd);border-radius:99px;padding:10px 20px;cursor:pointer;text-decoration:none;transition:transform .15s,border-color .2s}
+button:hover,.btn:hover{border-color:var(--pk);transform:translateY(-1px)}
+button.p{background:linear-gradient(90deg,var(--pk),var(--pu));border:0;color:#fff;box-shadow:0 6px 24px -8px var(--pk)}
+button.d{color:var(--r)}
+.st{font-weight:600;color:var(--mu);display:inline-flex;align-items:center;gap:8px}
+.st::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--mu)}
+.st.on{color:var(--g)}.st.on::before{background:var(--g);box-shadow:0 0 10px var(--g)}
+.card{background:linear-gradient(160deg,var(--sf2),var(--sf));border:1px solid var(--bd);border-radius:18px;padding:22px;transition:transform .2s,border-color .2s,box-shadow .2s}
+a.card:hover,.lv .card:hover{transform:translateY(-4px);border-color:var(--c,var(--pk));box-shadow:0 18px 40px -20px var(--c,var(--pk))}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.cols h3{font-size:1.2rem;margin-bottom:10px}
+.pr{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--bd)}
+.pr:last-child{border:0}
+.pr b{color:var(--pk);white-space:nowrap;border:1px solid var(--pk);background:#ff2d7814;border-radius:99px;padding:1px 14px;font-size:.95rem}
+.lv{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+.lv .card{--c:var(--pk);text-align:center;border-color:color-mix(in srgb,var(--c) 45%,var(--bd));box-shadow:0 0 36px -16px var(--c)}
+.lv h3{color:var(--c);font-size:1.5rem}.lv small{font-weight:600;letter-spacing:.06em}
+.lv p{color:var(--mu);margin:12px 0 16px;font-size:.95rem}
+.em{font-size:2.6rem;line-height:1.2;margin-bottom:6px}
+.pips{display:flex;gap:4px}.pips s{height:6px;flex:1;border-radius:3px;background:var(--bd)}.pips s.f{background:var(--c)}
+.note{border:1px solid var(--bd);border-left:4px solid var(--pu);background:var(--sf);padding:14px 18px;margin-top:20px;border-radius:12px}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:520px}
+th,td{text-align:left;padding:10px;border-bottom:1px solid var(--bd);vertical-align:middle}
+th{color:var(--mu);font-weight:600}
+input,select,textarea{font:inherit;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:9px 12px;width:100%;min-width:0}
+td input{padding:5px 8px}
+footer{margin-top:80px;padding:32px 20px;border-top:1px solid var(--bd);text-align:center;color:var(--mu)}
+.adm{display:grid;grid-template-columns:190px 1fr;gap:28px;padding:36px 20px}
+.tabs{display:flex;flex-direction:column;gap:6px}.tabs button{text-align:left;border-radius:12px}.tabs .on{background:linear-gradient(90deg,var(--pk),var(--pu));border:0;color:#fff}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:20px}
+.stats b{display:block;font:700 2.1rem "Chakra Petch",sans-serif;color:var(--y)}.stats span{color:var(--mu)}
+.fm{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px;align-items:end}
+.fm label{display:grid;gap:4px;color:var(--mu);font-size:.9rem}
+.login{max-width:380px;margin:60px auto;display:grid;gap:14px}
+.tag{padding:2px 10px;border-radius:99px;border:1px solid var(--bd);font-size:.85rem}
+@media(max-width:700px){.adm{grid-template-columns:1fr}.tabs{flex-direction:row;overflow-x:auto}.hero{padding-top:48px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.nw{margin-bottom:16px}.nw img{width:100%;max-height:260px;object-fit:cover;border-radius:12px;margin-bottom:12px}.nw small{color:var(--mu)}.nw p{white-space:pre-line;color:var(--mu);margin:6px 0 0}input[type=checkbox]{width:auto}textarea{resize:vertical}
+.th{width:56px;height:56px;object-fit:cover;border-radius:10px;flex:none}.th.ph{background:var(--sf2);border:1px solid var(--bd)}
+.rw{display:flex;gap:12px;align-items:center;min-width:0}.pr{flex-wrap:wrap}
+.ck{display:flex!important;gap:8px;align-items:center;color:var(--tx)!important;margin:10px 0}.ck input{width:auto}
+.ap{margin-bottom:14px}.ap p{white-space:pre-line}.mu{color:var(--mu)}.tag.ok{border-color:var(--g);color:var(--g)}.tag.no{border-color:var(--r);color:var(--r)}code{font-family:ui-monospace,monospace;letter-spacing:.08em}
+</style></head><body><div id="app"><p style="padding:40px;text-align:center">Cargando…</p></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const sb=supabase.createClient(NEX.url,NEX.key);
+const IT=[['Núcleo Pesado (Heavy Core)',3000],['Élitros',2000],['Adorno Silencio',1500],['Estrella del Nether',1000],['Manzana Dorada Encantada',500],['Tridente',450],['Cabeza de Dragón',400],['Tótem de la Inmortalidad',350],['Disco Pigstep',350],['Cabeza de Piglin',300],['Corazón del Mar',250],['Cabeza de Mob (Creeper/Zombi/Esqueleto)',200],['Cabeza de Wither Skeleton',150],['Caparazón de Shulker',100],['Escombros Ancestrales',150],['Diamante (unidad)',25],['Esmeralda (unidad)',15],['Lingote de Oro',8],['Cuarzo del Nether',5],['Lingote de Hierro',4],['Lapis Lázuli',2],['Polvo de Redstone',2]];
+const ST=['pendiente','entrevista','aprobada','rechazada'];
+const LVTXT='🌱 **Nivel 1 · Básico:** solo bromas que se limpian rápido y no afectan la base.\n🎭 **Nivel 2 · Estético:** bromas creativas, sin dañar bloques funcionales. Reversible.\n😈 **Nivel 3 · Molesto:** bromas grandes y pesadas, reversibles y sin daño permanente.\n💥 **Nivel 4 · Caótico:** caos controlado, incluida la muerte (loot devuelto). Máx. 500 elementos molestos.\n☠️ **Nivel 5 · Total:** todo permitido, sin reclamos.\n\nCada nivel incluye los anteriores. Sin declaración se aplica el Nivel 1. Si alguien pide parar, se para de inmediato.';
+const GUIA='La moneda de referencia son los NexCoins (NC), de 2 a 3.000 NC. La economía se basa en el intercambio de ítems entre jugadores y en tiendas autogestionadas.\nLos minerales valen poco a propósito, para evitar la inflación de las granjas automáticas.\nDeclara tu nivel de bromas en #niveles-de-bromas o con un letrero en tu base.';
+let me,tab='res',cache={},ed=null,af='pendiente',PRE={};
+const today=()=>new Date().toISOString().slice(0,10);
+const fd=d=>new Date(String(d).slice(0,10)+'T12:00').toLocaleDateString('es',{day:'numeric',month:'short',year:'numeric'});
+const loc=iso=>{const d=new Date(iso||'2027-01-01T00:00:00-05:00');if(isNaN(d))return'';const p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`};
+const img=p=>p?sb.storage.from('media').getPublicUrl(p).data.publicUrl:'';
+const site=h=>new URL('index.html',location.href).href+'#'+h;
+async function boot(){const {data:{session}}=await sb.auth.getSession();if(!session)return location.replace('login.html');
+const {data:p}=await sb.from('profiles').select('*').eq('id',session.user.id).single();
+if(!p||!p.active){await sb.auth.signOut();return location.replace('login.html')}me=p;view()}
+const out=async()=>{await sb.auth.signOut();location.replace('login.html')};
+async function view(){const adm=me.role==='admin',tabs=[['res','Resumen'],['news','Noticias'],['events','Eventos'],['apps','Postulaciones']].concat(adm?[['discord','Discord'],['settings','Ajustes'],['users','Usuarios']]:[]);
+if(!tabs.some(t=>t[0]===tab))tab='res';
+$('#app').innerHTML=`<div class="wrap adm"><nav class="tabs">${tabs.map(([k,n])=>`<button class="${k===tab?'on':''}" onclick="tab='${k}';ed=null;view()">${n}</button>`).join('')}<button onclick="location.href='index.html'">Ver la web</button><button onclick="out()">Salir (${esc(me.username)})</button></nav><div><h2>${tabs.find(t=>t[0]===tab)[1]}</h2><br><div id="pn">Cargando…</div></div></div>`;
+await ({res,news:()=>crud('news'),events:()=>crud('events'),apps,discord,settings,users})[tab]()}
+async function res(){const cnt=async(t,f)=>{let q=sb.from(t).select('*',{count:'exact',head:true});if(f)q=f(q);return (await q).count??0},adm=me.role==='admin';
+const [n,e,a,u]=await Promise.all([cnt('news'),cnt('events',q=>q.gte('starts_on',today())),cnt('applications',q=>q.eq('status','pendiente')),adm?cnt('profiles'):Promise.resolve(null)]);
+const {data:l}=await sb.from('applications').select('mc_username,score,passed,status,created_at').order('created_at',{ascending:false}).limit(5);
+$('#pn').innerHTML=`<div class="stats"><div class="card"><b>${n}</b><span>Noticias</span></div><div class="card"><b>${e}</b><span>Eventos próximos</span></div><div class="card"><b>${a}</b><span>Postulaciones pendientes</span></div>${u===null?'':`<div class="card"><b>${u}</b><span>Cuentas de staff</span></div>`}</div><h3>Últimas postulaciones</h3><br>${(l||[]).length?`<div class="tw"><table><tr><th>Usuario</th><th>Examen</th><th>Estado</th><th>Fecha</th></tr>${l.map(x=>`<tr><td>${esc(x.mc_username)}</td><td><span class="tag ${x.passed?'ok':'no'}">${x.score}/20</span></td><td>${esc(x.status)}</td><td>${fd(x.created_at)}</td></tr>`).join('')}</table></div>`:'<p class="sub">Todavía no hay postulaciones.</p>'}`}
+async function crud(t){const ev=t==='events',{data,error}=await sb.from(t).select('*').order(ev?'starts_on':'published_at',{ascending:false});
+if(error)return $('#pn').textContent='Error: '+error.message;cache[t]=data;const r=ed&&ed.t===t?data.find(x=>x.id===ed.id):null;
+$('#pn').innerHTML=`${r?`<div class="note">Editando: <b>${esc(r.title)}</b></div><br>`:''}<div class="fm"><label>Título<input id="f1" maxlength="120" value="${esc(r?.title)}"></label>${ev?`<label>Inicio<input id="fs" type="date" value="${esc(r?.starts_on)}"></label><label>Fin (opcional)<input id="fe" type="date" value="${esc(r?.ends_on)}"></label>`:''}<label>${r?.image_path?'Cambiar imagen':'Imagen'} (máx. 3 MB)<input id="fi" type="file" accept="image/jpeg,image/png,image/webp"></label></div><label>${ev?'Descripción':'Texto'}<textarea id="f2" rows="5" maxlength="${ev?2000:5000}">${esc(r?(ev?r.description:r.body):'')}</textarea></label><label class="ck"><input type="checkbox" id="fd"${r?'':' checked'}> Avisar en Discord (${ev?'🏆-eventos':'📢-anuncios'})</label><p><button class="p" onclick="save('${t}')">${r?'Guardar cambios':ev?'Crear evento':'Publicar noticia'}</button>${r?' <button onclick="ed=null;view()">Cancelar</button>':''}</p><br>${data.map(x=>`<div class="pr"><span class="rw">${x.image_path?`<img class="th" src="${esc(img(x.image_path))}" alt="">`:'<span class="th ph"></span>'}<span><b>${esc(x.title)}</b><br><small>${fd(ev?x.starts_on:x.published_at)}${ev&&x.ends_on?' – '+fd(x.ends_on):''}</small>${x.published?'':' <span class="tag">borrador</span>'}</span></span><span><button onclick="ed={t:'${t}',id:${x.id}};view()">Editar</button> <button onclick="tog('${t}',${x.id},${!x.published})">${x.published?'Ocultar':'Publicar'}</button> <button class="d" onclick="del('${t}',${x.id})">Borrar</button></span></div>`).join('')||'<p class="sub">Todavía no hay nada. Los eventos los publicas tú, cuando quieras.</p>'}`}
+async function notify(channel,title,body,link){const {data,error}=await sb.functions.invoke('discord-notify',{body:{channel,title,body,link}});if(error){let m='error desconocido';try{m=(await error.context.json()).error||m}catch(e){}return m}return data&&data.error?data.error:null}
+async function save(t){const ev=t==='events',ti=$('#f1').value.trim(),f=$('#fi').files[0],r=ed&&ed.t===t?cache[t].find(x=>x.id===ed.id):null;
+if(!ti)return alert('Falta el título');if(ev&&!$('#fs').value)return alert('Falta la fecha de inicio');
+let path=r?.image_path||null,old=null;
+if(f){if(!/^image\/(jpeg|png|webp)$/.test(f.type)||f.size>3145728)return alert('La imagen debe ser JPG, PNG o WebP de máximo 3 MB');
+const np=`${t}/${crypto.randomUUID()}.${f.type.split('/')[1]}`,u=await sb.storage.from('media').upload(np,f,{contentType:f.type});if(u.error)return alert(u.error.message);old=path;path=np}
+const tx=$('#f2').value,row=ev?{title:ti,description:tx,starts_on:$('#fs').value,ends_on:$('#fe').value||null,image_path:path}:{title:ti,body:tx,image_path:path};
+const x=await(r?sb.from(t).update(row).eq('id',r.id):sb.from(t).insert(row));
+if(x.error){if(f)await sb.storage.from('media').remove([path]);return alert(x.error.message)}
+if(old)await sb.storage.from('media').remove([old]);
+let warn='';if($('#fd').checked){const m=await notify(ev?'eventos':'anuncios',ti,ev?fd($('#fs').value)+($('#fe').value?' – '+fd($('#fe').value):'')+'\n\n'+tx:tx,site(ev?'eventos':'noticias'));if(m)warn='Se guardó, pero no se pudo avisar en Discord: '+m}
+ed=null;await view();if(warn)alert(warn)}
+async function tog(t,id,v){const r=await sb.from(t).update({published:v}).eq('id',id);if(r.error)alert(r.error.message);view()}
+async function del(t,id){if(!confirm('¿Borrar definitivamente?'))return;const p=(cache[t].find(x=>x.id===id)||{}).image_path,r=await sb.from(t).delete().eq('id',id);if(r.error)return alert(r.error.message);if(p)await sb.storage.from('media').remove([p]);view()}
+async function apps(){let q=sb.from('applications').select('*').order('created_at',{ascending:false}).limit(100);if(af)q=q.eq('status',af);const {data,error}=await q;if(error)return $('#pn').textContent='Error: '+error.message;cache.a=data;
+$('#pn').innerHTML=`<div class="fm"><label>Filtrar por estado<select onchange="af=this.value;view()"><option value="">Todas</option>${ST.map(s=>`<option${s===af?' selected':''}>${s}</option>`).join('')}</select></label></div>${data.map((a,i)=>`<div class="card ap"><div class="pr" style="border:0;padding:0"><span><b>${esc(a.mc_username)}</b> · ${esc(a.discord)}${a.age?` · ${a.age} años`:''}<br><small>${fd(a.created_at)}</small></span><span class="tag ${a.passed?'ok':'no'}">Examen ${a.score}/20</span></div><p>${esc(a.motivation)}</p>${a.experience?`<p class="mu"><b>Experiencia:</b> ${esc(a.experience)}</p>`:''}<p class="mu"><b>Respuestas:</b> <code>${esc(a.answers)}</code></p><div class="fm"><label>Estado<select id="as${i}">${ST.map(s=>`<option${s===a.status?' selected':''}>${s}</option>`).join('')}</select></label><label>Nota interna<input id="an${i}" maxlength="1000" value="${esc(a.staff_note)}"></label><button class="p" onclick="saveApp(${i})">Guardar</button>${me.role==='admin'?`<button class="d" onclick="delApp(${i})">Borrar</button>`:''}</div></div>`).join('')||'<p class="sub">No hay postulaciones con ese filtro.</p>'}`}
+async function saveApp(i){const r=await sb.from('applications').update({status:$('#as'+i).value,staff_note:$('#an'+i).value.trim()||null,reviewed_by:me.id}).eq('id',cache.a[i].id);alert(r.error?r.error.message:'Guardado');view()}
+async function delApp(i){if(!confirm('¿Borrar esta postulación?'))return;const r=await sb.from('applications').delete().eq('id',cache.a[i].id);if(r.error)alert(r.error.message);view()}
+async function discord(){const {data}=await sb.from('settings').select('key,value'),s={};(data||[]).forEach(r=>s[r.key]=r.value);const a=s.server||{};
+PRE={ip:['Datos de conexión',`IP: ${a.ip||'(configúrala en Ajustes)'}\nVersión: ${a.ver||'-'}${a.disc?'\nDiscord: '+a.disc:''}`],reglas:['Niveles de Consentimiento',LVTXT],guia:['Guía rápida de NexCraft',GUIA],anuncios:['',''],eventos:['','']};
+$('#pn').innerHTML=`<p class="sub">Envía avisos a los canales de Discord. Los webhooks viven en el servidor, no en esta página.</p><div class="fm"><label>Canal<select id="dc" onchange="preset()">${[['anuncios','📢-anuncios'],['eventos','🏆-eventos'],['ip','🌐-ip-y-conexion'],['reglas','📜-reglas'],['guia','🧭│guia-rapida-del-servidor']].map(([k,n])=>`<option value="${k}">${n}</option>`).join('')}</select></label><label>Título<input id="dt" maxlength="200"></label></div><label>Mensaje<textarea id="db" rows="7" maxlength="3500"></textarea></label><p><button class="p" onclick="sendDc()">Enviar a Discord</button></p>`;preset()}
+function preset(){const p=PRE[$('#dc').value]||['',''];$('#dt').value=p[0];$('#db').value=p[1]}
+async function sendDc(){const t=$('#dt').value.trim();if(!t)return alert('Falta el título');const m=await notify($('#dc').value,t,$('#db').value,site('inicio'));alert(m?'No se pudo enviar: '+m:'Enviado a Discord')}
+async function settings(){const {data}=await sb.from('settings').select('key,value'),s={};(data||[]).forEach(r=>s[r.key]=r.value);const a=s.server||{},pr=s.prices||{};
+$('#pn').innerHTML=`<div class="fm"><label>IP del servidor<input id="s1" value="${esc(a.ip)}"></label><label>Versión<input id="s2" value="${esc(a.ver)}"></label><label>Máx. jugadores<input id="s3" type="number" value="${esc(a.max??50)}"></label><label>Enlace de Discord<input id="s4" value="${esc(a.disc)}"></label><label>Fecha de apertura (hora de tu dispositivo)<input id="s7" type="datetime-local" value="${loc(a.opening)}"></label><label>Mantenimiento<select id="s5"><option value="0">No</option><option value="1"${a.maint?' selected':''}>Sí</option></select></label></div><label>Anuncios (uno por línea)<textarea id="s6" rows="3">${esc((s.announcements||[]).join('\n'))}</textarea></label><h3 style="margin:22px 0 8px">Precios (NC)</h3><div class="cols">${IT.map(([n,d])=>`<div class="pr"><span>${esc(n)}</span><input type="number" min="0" data-k="${esc(n)}" value="${pr[n]??d}" style="width:100px"></div>`).join('')}</div><p><button class="p" onclick="saveSet()">Guardar cambios</button></p>`}
+async function saveSet(){const p={};document.querySelectorAll('[data-k]').forEach(i=>p[i.dataset.k]=Math.max(0,+i.value||0));const d=$('#s4').value.trim();
+const r=await sb.from('settings').upsert([{key:'server',value:{ip:$('#s1').value.trim(),ver:$('#s2').value.trim(),max:+$('#s3').value||0,disc:/^https?:\/\//.test(d)?d:'',maint:$('#s5').value==='1',opening:$('#s7').value?new Date($('#s7').value).toISOString():''}},{key:'prices',value:p},{key:'announcements',value:$('#s6').value.split('\n').map(x=>x.trim()).filter(Boolean).slice(0,10)}]);alert(r.error?r.error.message:'Guardado')}
+async function users(){const {data,error}=await sb.from('profiles').select('*').order('created_at');if(error)return $('#pn').textContent='Error: '+error.message;cache.u=data;
+$('#pn').innerHTML=`<h3>Crear cuenta</h3><br><div class="fm"><label>Correo<input id="u1" type="email" autocomplete="off"></label><label>Usuario<input id="u2" maxlength="32" autocomplete="off"></label><label>Contraseña (mín. 10)<input id="u3" type="password" autocomplete="new-password"></label><label>Rol<select id="u4"><option value="editor">Editor</option><option value="admin">Administrador</option></select></label><button class="p" onclick="mk()">Crear cuenta</button></div><div id="ue" role="alert" style="color:var(--r);min-height:1.4em"></div><div class="tw"><table><tr><th>Usuario</th><th>Rol</th><th>Activo</th></tr>${data.map((u,i)=>`<tr><td>${esc(u.username)}</td><td><select onchange="upd(${i},{role:this.value})"${u.id===me.id?' disabled':''}><option value="editor"${u.role==='editor'?' selected':''}>Editor</option><option value="admin"${u.role==='admin'?' selected':''}>Administrador</option></select></td><td><input type="checkbox"${u.active?' checked':''}${u.id===me.id?' disabled':''} onchange="upd(${i},{active:this.checked})"></td></tr>`).join('')}</table></div>`}
+async function mk(){const {error}=await sb.functions.invoke('create-user',{body:{email:$('#u1').value,username:$('#u2').value,password:$('#u3').value,role:$('#u4').value}});
+if(error){let m='No se pudo crear la cuenta.';try{m=(await error.context.json()).error||m}catch(e){}return $('#ue').textContent=m}view()}
+async function upd(i,ch){const r=await sb.from('profiles').update(ch).eq('id',cache.u[i].id);if(r.error)alert(r.error.message);view()}
+boot();
+</script></body></html>

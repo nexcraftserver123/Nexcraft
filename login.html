@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><title>NexCraft · Acceso staff</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Figtree:wght@400;600&display=swap">
+<style>
+:root{--bg:#0a0814;--sf:#140f24;--sf2:#1e1638;--tx:#f1ecff;--mu:#a398c4;--bd:#2f2450;--pk:#ff2d78;--pu:#8b2be2;--g:#5bd97a;--b:#4db5ff;--y:#ffc94a;--o:#ff7a2e;--r:#ff3355;--glass:#0a0814cc;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f8f5ff;--sf:#fff;--sf2:#f1eaff;--tx:#1a1230;--mu:#62597c;--bd:#ddd2f7;--glass:#f8f5ffcc;color-scheme:light}}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);background:var(--bg)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--tx);font:400 16px/1.65 Figtree,system-ui,sans-serif;min-height:100vh;background:radial-gradient(900px 520px at 50% -8%,#ff2d7830,transparent 65%),radial-gradient(700px 520px at 105% 25%,#8b2be230,transparent 65%),radial-gradient(600px 400px at -10% 60%,#8b2be218,transparent 65%)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:10}
+h1,h2,h3{font-family:"Chakra Petch",system-ui,sans-serif;margin:0;line-height:1.15;text-wrap:balance}
+h2{font-size:clamp(1.9rem,5vw,2.7rem);margin-bottom:10px;letter-spacing:.02em}
+h2::after{content:"";display:block;width:64px;height:4px;border-radius:4px;margin-top:12px;background:linear-gradient(90deg,var(--pk),var(--pu))}
+h3{margin-bottom:6px}
+a{color:inherit}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--bd);display:flex;gap:6px;align-items:center;padding:10px 20px;overflow-x:auto}
+header b{font:700 1.2rem "Chakra Petch",sans-serif;letter-spacing:.22em;background:linear-gradient(90deg,var(--pk),var(--pu));-webkit-background-clip:text;background-clip:text;color:transparent;margin-right:auto;white-space:nowrap}
+header a{text-decoration:none;color:var(--mu);white-space:nowrap;font-weight:600;padding:6px 14px;border-radius:99px;transition:background .2s,color .2s}
+header a:hover{color:var(--tx);background:var(--sf2)}
+header a.on{color:#fff;background:linear-gradient(90deg,var(--pk),var(--pu))}
+a.card{display:block;text-decoration:none}
+:focus-visible{outline:2px solid var(--pk);outline-offset:3px}
+main,.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:48px 0 8px}
+.sub{color:var(--mu);margin:0 0 28px;max-width:60ch}
+.ann{background:linear-gradient(90deg,#ff2d7826,#8b2be226);border-bottom:1px solid var(--bd);padding:10px 20px;text-align:center;font-weight:600}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:72px 0 24px}
+.hero .logo{width:132px;height:132px;border-radius:32px;box-shadow:0 0 0 1px var(--bd),0 0 80px #ff2d7870;animation:glow 4s ease-in-out infinite alternate}
+@keyframes glow{to{box-shadow:0 0 0 1px var(--pk),0 0 110px #8b2be2a0}}
+.hero h1{font-size:clamp(3rem,13vw,6.4rem);letter-spacing:.16em;margin:26px 0 0 .16em;background:linear-gradient(90deg,var(--pk) 10%,var(--pu) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(1.05rem,2.6vw,1.3rem);max-width:30ch;margin:14px 0 26px;color:var(--mu)}
+.ip{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center}
+button,.btn{font:600 1rem Figtree,sans-serif;background:var(--sf2);color:var(--tx);border:1px solid var(--bd);border-radius:99px;padding:10px 20px;cursor:pointer;text-decoration:none;transition:transform .15s,border-color .2s}
+button:hover,.btn:hover{border-color:var(--pk);transform:translateY(-1px)}
+button.p{background:linear-gradient(90deg,var(--pk),var(--pu));border:0;color:#fff;box-shadow:0 6px 24px -8px var(--pk)}
+button.d{color:var(--r)}
+.st{font-weight:600;color:var(--mu);display:inline-flex;align-items:center;gap:8px}
+.st::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--mu)}
+.st.on{color:var(--g)}.st.on::before{background:var(--g);box-shadow:0 0 10px var(--g)}
+.card{background:linear-gradient(160deg,var(--sf2),var(--sf));border:1px solid var(--bd);border-radius:18px;padding:22px;transition:transform .2s,border-color .2s,box-shadow .2s}
+a.card:hover,.lv .card:hover{transform:translateY(-4px);border-color:var(--c,var(--pk));box-shadow:0 18px 40px -20px var(--c,var(--pk))}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.cols h3{font-size:1.2rem;margin-bottom:10px}
+.pr{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--bd)}
+.pr:last-child{border:0}
+.pr b{color:var(--pk);white-space:nowrap;border:1px solid var(--pk);background:#ff2d7814;border-radius:99px;padding:1px 14px;font-size:.95rem}
+.lv{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+.lv .card{--c:var(--pk);text-align:center;border-color:color-mix(in srgb,var(--c) 45%,var(--bd));box-shadow:0 0 36px -16px var(--c)}
+.lv h3{color:var(--c);font-size:1.5rem}.lv small{font-weight:600;letter-spacing:.06em}
+.lv p{color:var(--mu);margin:12px 0 16px;font-size:.95rem}
+.em{font-size:2.6rem;line-height:1.2;margin-bottom:6px}
+.pips{display:flex;gap:4px}.pips s{height:6px;flex:1;border-radius:3px;background:var(--bd)}.pips s.f{background:var(--c)}
+.note{border:1px solid var(--bd);border-left:4px solid var(--pu);background:var(--sf);padding:14px 18px;margin-top:20px;border-radius:12px}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:520px}
+th,td{text-align:left;padding:10px;border-bottom:1px solid var(--bd);vertical-align:middle}
+th{color:var(--mu);font-weight:600}
+input,select,textarea{font:inherit;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:9px 12px;width:100%;min-width:0}
+td input{padding:5px 8px}
+footer{margin-top:80px;padding:32px 20px;border-top:1px solid var(--bd);text-align:center;color:var(--mu)}
+.adm{display:grid;grid-template-columns:190px 1fr;gap:28px;padding:36px 20px}
+.tabs{display:flex;flex-direction:column;gap:6px}.tabs button{text-align:left;border-radius:12px}.tabs .on{background:linear-gradient(90deg,var(--pk),var(--pu));border:0;color:#fff}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:20px}
+.stats b{display:block;font:700 2.1rem "Chakra Petch",sans-serif;color:var(--y)}.stats span{color:var(--mu)}
+.fm{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px;align-items:end}
+.fm label{display:grid;gap:4px;color:var(--mu);font-size:.9rem}
+.login{max-width:380px;margin:60px auto;display:grid;gap:14px}
+.tag{padding:2px 10px;border-radius:99px;border:1px solid var(--bd);font-size:.85rem}
+@media(max-width:700px){.adm{grid-template-columns:1fr}.tabs{flex-direction:row;overflow-x:auto}.hero{padding-top:48px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.nw{margin-bottom:16px}.nw img{width:100%;max-height:260px;object-fit:cover;border-radius:12px;margin-bottom:12px}.nw small{color:var(--mu)}.nw p{white-space:pre-line;color:var(--mu);margin:6px 0 0}input[type=checkbox]{width:auto}textarea{resize:vertical}
+</style></head><body>
+<form class="card login" id="f"><img class="logo" style="width:72px;height:72px;border-radius:18px;animation:none" src="data:image/webp;base64,UklGRrADAABXRUJQVlA4IKQDAABQFACdASpgAGAAPm0ulEYkIqIhLxWpsIANiWYBiAIRxC1ndGjVb8zcKvbm8Rn9N+tj5gP2G9f/0megB/p/Ny9iXeR/269EBosDQbx5Mv/vWGfb3K99EjwnHUd5d6qRZunsG8H3vFxJGORQLrEAez3hbHDvMB2xig0MUSFuumH+mjCZvAYj3Bb9+lPlXKT5AelXX1Pho1FhYv0LQ0gNTt+WSucQUMwyEz/woJgA/vyuUVQGxto+5DEkILfMbgSt//45BPCCBO9tdhr0JyWa8of7bqLDZC6Mv9Cm9+dCl2QDuit7XEVJEblA/PAgjBEVcPrBWroO57P1IOzPOxRmxexM7qfw/6YYQ9wJs5j8WKgLJx09FKMgusTRmetsXCvYHAGJ1mED0XeVIDm9tmnbUXkVp/E4hifxv2Gv3LzrcCorK6b5qntTnrBgpXceVQqljsqQb4XGgD87etku0d8fyxXgvP/inmsZ916JRt6U27n2KMu3vpsqaC9fBTfX1exZWHTkdqn9XPdHdIo6R/uDotHmfDUulY9NH3Kv/RtI1aiAICh9nZ3dUCKVkvRG4si87VgZCFONJn0Rf+7KRTgGvdA1+QX7+ZsCFX8TJlp1hwD4kJPrcgx6/18uTxhK2PZL1U+UsPnNT2i4/OaCARgnSvs+QaiAfl4Qmq6W3/EQBQ6H4Dis7fwi5Ne58GQhBaR0SKkh0rPke9xNna495OyO/pHzTOtq9ykBpxQoNe37TfbsJzZlbBv4dnrvvJ1jnaucHdsc9OSLDLUBKbjWEnY+NVtpBMfbl+oF0EsVA0bvRStapSjZhTkQvIjsOrrtZ3mY8zjvpVwrhqL2EJbVkW2vU37nq+ncLCqFn9g64P5WK+Dv3bM/5CNQ73AHgKqIHvHnSQI4kFZ0jG9LWW0bA7yhvSyL+uYqKhpYIq6VZEbbYpwQLlMg4/OoZWLjHe6KQ29hfAPARVV0OSIxiffGmm+zsbPRXfCEqvAWclVLantkA8+LUkKp9BvjFnXHOYy6tFAmL0KQOALYpYicwpipCSxDyUpW6qC+ZJJxEu4fYRnyRViXnfa7ErrHYctGknv4mkWZCETzL+IT/RH5JgN0emRNZNa64nNz8N0a9jkVZYjpfsJiFwSBEyRA4ZNyVlkyz8nlVxL0V6v4N3TsO0bs11YssUhwtx0Yh2btNrtoR8r3VkJJv3m0BEzTHkmihdUiYfo5417KYFwWD972nmUej0zBBf7faxjYAA==" alt=""><h2>Acceso staff</h2>
+<label>Correo<input id="em" type="email" autocomplete="username" required></label>
+<label>Contraseña<input id="pw" type="password" autocomplete="current-password" required></label>
+<div id="er" role="alert" style="color:var(--r);min-height:1.4em"></div>
+<button class="p" id="go">Entrar</button><a href="index.html" style="color:var(--mu)">Volver a la web</a></form>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script>
+const $=s=>document.querySelector(s),sb=supabase.createClient(NEX.url,NEX.key);
+sb.auth.getSession().then(({data})=>{if(data.session)location.replace('admin.html')});
+$('#f').onsubmit=async e=>{e.preventDefault();$('#go').disabled=true;const {error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});
+if(error){const m=error.message||'';$('#er').textContent=/invalid login/i.test(m)?'Correo o contraseña incorrectos.':/not confirmed/i.test(m)?'La cuenta no está confirmada. Créala con Auto Confirm User.':'Error técnico: '+m+(error.status?' (código '+error.status+')':'');$('#go').disabled=false}else location.replace('admin.html')};
+if(/TU-PROYECTO|TU_CLAVE/.test(NEX.url+NEX.key))$('#er').textContent='config.js todavía tiene los textos de ejemplo.';
+</script></body></html>
